@@ -5,8 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private Spawner spawner;
+    public GameObject title;
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
+        title.SetActive(true);
+    }
+
     void Start()
     {
         spawner.active = false;
@@ -18,11 +24,7 @@ public class GameManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
             spawner.active = true;
+            title.SetActive(false);
         }
-    }
-
-    void Awake()
-    {
-        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 }
